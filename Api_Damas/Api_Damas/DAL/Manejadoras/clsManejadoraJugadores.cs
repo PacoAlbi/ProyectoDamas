@@ -89,7 +89,7 @@ namespace Api_Damas.DAL.Manejadoras
         /// </summary>
         /// <param name="persona">Persona para insertar.</param>
         /// <returns>Entero con el número de filas afectadas si las hay.</returns>
-        public static int insertarPersonasDAL(clsPersona persona)
+        public static int insertarPersonasDAL(clsJugador persona)
         {
             int numeroFilasAfectadas = 0;
             clsMyConnection miConexion = new clsMyConnection();

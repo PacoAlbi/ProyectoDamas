@@ -1,4 +1,5 @@
-﻿using DAL;
+﻿using Api_Damas.Entidades;
+using DAL;
 using Microsoft.Data.SqlClient;
 
 namespace Api_Damas.DAL.Manejadoras
@@ -46,7 +47,7 @@ namespace Api_Damas.DAL.Manejadoras
         /// </summary>
         /// <param name="departamento">Departamento para editar.</param>
         /// <returns>Entero con el número de filas afectadas si las hay.</returns>
-        public static int editarDepartamentoDAL(clsDepartamentos departamento)
+        public static int editarDepartamentoDAL(clsSala departamento)
         {
             int numeroFilasAfectadas = 0;
             clsMyConnection miConexion = new clsMyConnection();

@@ -1,31 +1,31 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Api_Damas.API
+namespace Api_Damas.Controllers.API
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class SalasController : Controller
+    public class JugadoresController : Controller
     {
-        // GET: SalasController
+        // GET: JugadoresController
         public ActionResult Index()
         {
             return View();
         }
 
-        // GET: SalasController/Details/5
+        // GET: JugadoresController/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: SalasController/Create
+        // GET: JugadoresController/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: SalasController/Create
+        // POST: JugadoresController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(IFormCollection collection)
@@ -40,13 +40,13 @@ namespace Api_Damas.API
             }
         }
 
-        // GET: SalasController/Edit/5
+        // GET: JugadoresController/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: SalasController/Edit/5
+        // POST: JugadoresController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, IFormCollection collection)
@@ -61,13 +61,13 @@ namespace Api_Damas.API
             }
         }
 
-        // GET: SalasController/Delete/5
+        // GET: JugadoresController/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: SalasController/Delete/5
+        // POST: JugadoresController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)
