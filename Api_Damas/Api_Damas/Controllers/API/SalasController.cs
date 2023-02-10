@@ -1,49 +1,61 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Api_Damas.DAL;
+using Api_Damas.Entidades;
+using Api_Damas.DAL.Listados;
+using Api_Damas.DAL.Manejadoras;
 
 namespace Api_Damas.Controllers.API
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class departamentosController : ControllerBase
+    public class SalasController : ControllerBase
     {
-        // GET: api/<departamentosController>
+        // GET: api/<SalasController>
         [HttpGet]
         public IEnumerable<clsSala> Get()
         {
-            return clsListadoDepartamentosBL.getListadoDepartamentosBL();
+            return clsListadoSalas.ObtenerListadoCompletoSalasDAL();
         }
 
-        // GET api/<departamentosController>/5
+        // GET api/<SalasController>/5
         [HttpGet("{id}")]
-        public clsDepartamentos Get(int id)
+        public clsSala GetSalaPorId(int id)
         {
-            return clsListadoDepartamentosBL.obtenerDepartamentoPorIdBL(id);
+            return clsListadoSalas.ObtenerSalaPorIdDAL(id);
         }
 
-        // POST api/<departamentosController>
+        // GET api/<SalasController>/5
+        [HttpGet("{id}")]
+        public clsSala GetListaSalasId(int id)
+        {
+            return clsListadoSalas.ObtenerSalaPorJugadorDAL(id);
+        }
+
+
+        // POST api/<SalasController>
         [HttpPost]
-        public void Post([FromBody] clsDepartamentos departamento)
+        public void Post([FromBody] clsSala sala)
         {
-            clsManejadoraDepartamentos.insertarDepartamentoBL(departamento);
+            clsManejadoraSalas.insertarSalaDAL(sala);
         }
 
-        // PUT api/<departamentosController>/5
+        // PUT api/<SalasController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] clsDepartamentos departamento)
+        public void Put(int id, [FromBody] clsSala sala)
         {
-            clsManejadoraDepartamentos.editarDepartamentoBL(departamento);
+            clsManejadoraSalas.editarSalaDAL(sala);
         }
 
-        // DELETE api/<departamentosController>/5
+        // DELETE api/<SalasController>/5
         [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+        public IActionResult Delete(int codSala)
         {
             IActionResult result = null;
             int numeroFilasAfectadas = 0;
             try
             {
-                numeroFilasAfectadas = clsManejadoraDepartamentos.borrarDepartamentosBL(id);
+                numeroFilasAfectadas = clsManejadoraSalas.borrarSalaDAL(codSala);
                 if (numeroFilasAfectadas == 0)
                 {
                     result = NoContent();
