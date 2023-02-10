@@ -1,85 +1,77 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Api_Damas.DAL.Listados;
+using Api_Damas.DAL.Manejadoras;
+using Api_Damas.Entidades;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Api_Damas.Controllers.API
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class JugadoresController : Controller
+    public class JugadoresController : ControllerBase
     {
-        // GET: JugadoresController
-        public ActionResult Index()
+        // GET: api/<JugadoresController>
+        [HttpGet]
+        public List<clsJugador> Get()
         {
-            return View();
+            return clsListadoJugadores.ObtenerListadoJugadoresDAL();
         }
 
-        // GET: JugadoresController/Details/5
-        public ActionResult Details(int id)
+        // GET api/<JugadoresController>/5
+        [HttpGet("{id}")]
+        public clsJugador Get(int id)
         {
-            return View();
+            return clsListadoJugadores.ObtenerJugadorPorIdDAL(id);
         }
 
-        // GET: JugadoresController/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: JugadoresController/Create
+        // POST api/<JugadoresController>
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public IActionResult Post([FromBody] clsJugador jugador)
         {
+            IActionResult result = null;
+            int numeroFilasAfectadas = 0;
             try
             {
-                return RedirectToAction(nameof(Index));
+                numeroFilasAfectadas = clsManejadoraJugadores.insertarJugadorDAL(jugador);
             }
-            catch
+            catch (Exception e)
             {
-                return View();
+                result = BadRequest();
             }
+            if (numeroFilasAfectadas == 0)
+            {
+                result = NoContent();
+            }
+            else
+            {
+                result = Ok();
+            }
+            return result;
         }
 
-        // GET: JugadoresController/Edit/5
-        public ActionResult Edit(int id)
+        // PUT api/<JugadoresController>/5
+        [HttpPut("{id}")]
+        public IActionResult Put([FromBody] clsJugador jugador)
         {
-            return View();
-        }
+            IActionResult result = null;
+            int numeroFilasAfectadas = 0;
 
-        // POST: JugadoresController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
             try
             {
-                return RedirectToAction(nameof(Index));
+                numeroFilasAfectadas = clsManejadoraJugadores.editarJugadorDAL(jugador);
             }
-            catch
+            catch (Exception e)
             {
-                return View();
+                result = BadRequest();
             }
-        }
-
-        // GET: JugadoresController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: JugadoresController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
+            if (numeroFilasAfectadas == 0)
             {
-                return RedirectToAction(nameof(Index));
+                result = NoContent();
             }
-            catch
+            else
             {
-                return View();
+                result = Ok();
             }
+            return result;
         }
     }
 }
