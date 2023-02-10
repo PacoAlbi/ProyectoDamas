@@ -15,7 +15,7 @@ namespace Api_Damas.Entidades
         private string _jugadorArriba;
         //private clsJugador _jugadorAbajo;
         private string _jugadorAbajo;
-        private int _tiempo;
+        private long _tiempo;
         private int _cantidadFichasArriba;
         private int _cantidadFichasAbajo;
         #endregion
@@ -25,7 +25,7 @@ namespace Api_Damas.Entidades
         public string nombreSala { get { return _nombreSala; } set { _nombreSala = value; } }
         public string jugadorArriba { get { return _jugadorArriba; } set { _jugadorArriba = value; } }
         public string jugadorAbajo { get { return _jugadorAbajo; } set { _jugadorAbajo = value; } }
-        public int tiempo { get { return _tiempo; } set { _tiempo = value; } }
+        public long tiempo { get { return _tiempo; } set { _tiempo = value; } }
         public int cantidadFichasArriba { get { return _cantidadFichasArriba; } set { _cantidadFichasArriba = value; } }
         public int cantidadFichasAbajo { get { return _cantidadFichasAbajo; } set { _cantidadFichasAbajo = value; } }
         #endregion
