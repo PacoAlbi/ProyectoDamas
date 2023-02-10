@@ -4,9 +4,16 @@
              x:Class="Damas.Views.GamePage"
              Title="GamePage">
     <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+        <HorizontalStackLayout>
+
+        </HorizontalStackLayout>
+
+        <Grid
+            VerticalOptions="Center"
+            HorizontalOptions="Center"
+            ColumnDefinitions="*,*,*,*,*,*,*,*"
+            RowDefinitions="*,*,*,*,*,*,*,*">
+            
+        </Grid>
     </VerticalStackLayout>
 </ContentPage>

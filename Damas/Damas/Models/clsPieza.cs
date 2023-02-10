@@ -24,5 +24,6 @@ namespace Damas.Models
 			public Color colorPieza { get; set; }
 			public Tipo tipoPieza { get; set; }
 		}
+
 	}
 }
