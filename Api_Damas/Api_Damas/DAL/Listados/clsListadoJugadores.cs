@@ -10,14 +10,14 @@ namespace Api_Damas.DAL.Listados
     {
         /// <summary>
         /// Precondiciones: No tiene.
-        /// Conecto con la BBDD y saco una lista de personas de la tabla Personas para mandar a la BL.
+        /// Conecta con la BBDD y obtenemos una lista de jugadores de la tabla Jugadores.
         /// Lanza los errores a la capa superior.
-        /// Postcondiciones: Devuelve una lista de personas de la BBDD.
+        /// Postcondiciones: Devuelve una lista de jugadores de la BBDD.
         /// </summary>
         /// <returns>List de personas.</returns>
-        public static List<clsJugador> getListadoJugadores()
+        public static List<clsJugador> ObtenerListadoJugadoresDAL()
         {
-            List<clsJugador> listadoPersonasDAL = new List<clsJugador>();
+            List<clsJugador> listaJugadores = new List<clsJugador>();
             clsMyConnection miConexion = new clsMyConnection();
             SqlConnection conexion = new SqlConnection();
             SqlCommand miComando = new SqlCommand();
@@ -37,31 +37,32 @@ namespace Api_Damas.DAL.Listados
                         miJugador = new clsJugador();
                         miJugador.nombre = (string)miLector["nombre"];
                         miJugador.password = (string)miLector["password"];
-                        listadoPersonasDAL.Add(miJugador);
+                        listaJugadores.Add(miJugador);
                     }
                 }
                 miLector.Close();
                 miConexion.closeConnection(ref conexion);
             }
-            catch (SqlException)
+            catch (SqlException sqlEx)
             {
-                throw;
+                throw sqlEx;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
-            return listadoPersonasDAL;
+            return listaJugadores;
         }
+
         /// <summary>
-        /// Precondiciones: Debe recivir el id de una persona.
-        /// Busco en la Base de datos a un usuario pasando el id como parámetro.
+        /// Precondiciones: Debe recibir el id de una persona.
+        /// Busco en la base de datos a un jugador pasando el id como parámetro
         /// Lanza los errores a la capa superior.
-        /// Postcondiciones: Devuelve una persona de la BBDD.
+        /// Postcondiciones: Devuelve un jugador de la BBDD.
         /// </summary>
         /// <param name="id">Entero que representa el id de la persona a buscar.</param>
-        /// <returns>Devuelve una clsPersona encontrada por su id.</returns>
-        public static clsJugador getJugadorPorId(int id)
+        /// <returns> Devuelve un clsJugador encontrado por su id. </returns>
+        public static clsJugador ObtenerJugadorPorIdDAL(int id)
         {
             clsMyConnection miConexion = new clsMyConnection();
             SqlConnection conexion = new SqlConnection();
@@ -88,13 +89,13 @@ namespace Api_Damas.DAL.Listados
                 miLector.Close();
                 miConexion.closeConnection(ref conexion);
             }
-            catch (SqlException)
+            catch (SqlException sqlEx)
             {
-                throw;
+                throw sqlEx;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
             return miJugador;
         }
