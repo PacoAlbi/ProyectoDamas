@@ -7,25 +7,24 @@ namespace Api_Damas.DAL.Manejadoras
     public class clsManejadoraJugadores
     {
         /// <summary>
-        /// Precondiciones: Deber recivir la id de una persona.
-        /// Recibe un entero que es el id de la persona a eliminar y accede a la base de datos para eliminarla.
-        /// Lanza los errores a la capa superior.
+        /// Descripcion: Recibe un entero que es el id de el jugador a eliminar y accede a la base de datos para eliminarlo. Lanza los errores a la capa superior.
+        /// Precondiciones: Deber recibir la id de un jugador.
         /// Postcondiciones: Borra la persona accediendo a la BBDD.
         /// </summary>
-        /// <param name="id">Entero que es el ID de la persona.</param>
+        /// <param name="idJugador">Entero que es el ID de el jugador.</param>
         /// <returns>Entero con el número de filas afectadas si las hay.</returns>
-        public static int borrarPersonaDAL(int id)
+        public static int borrarJugadorDAL(int idJugador)
         {
             int numeroFilasAfectadas = 0;
             clsMyConnection miConexion = new clsMyConnection();
             SqlConnection conexion = new SqlConnection();
             SqlCommand miComando = new SqlCommand();
-            miComando.Parameters.Add("@id", System.Data.SqlDbType.Int).Value = id;
+            miComando.Parameters.Add("@idJugador", System.Data.SqlDbType.Int).Value = idJugador;
 
             try
             {
                 conexion = miConexion.getConnection();
-                miComando.CommandText = "DELETE FROM Personas WHERE id=@id";
+                miComando.CommandText = "DELETE FROM Jugadores WHERE idJugador=@idJugador";
                 miComando.Connection = conexion;
                 numeroFilasAfectadas = miComando.ExecuteNonQuery();
             }
@@ -41,32 +40,26 @@ namespace Api_Damas.DAL.Manejadoras
         }
 
         /// <summary>
-        /// Precondiciones: Deber recivir la id de una persona.
-        /// Recibe una Persona ya editarda para actualizarla en la base de datos.
-        /// Lanza los errores a la capa superior.
-        /// Postcondiciones: Edita a la persona accediendo a la BBDD.
+        /// Descripcion: Recibe un Jugador ya editado para actualizarlo en la base de datos. Lanza los errores a la capa superior.
+        /// Precondiciones: Deber recibir la id de un jugador.
+        /// Postcondiciones: Edita al Jugador accediendo a la BBDD.
         /// </summary>
-        /// <param name="persona">Persona para editar.</param>
+        /// <param name="jugador">Persona para editar.</param>
         /// <returns>Entero con el número de filas afectadas si las hay.</returns>
-        public static int editarPersonaDAL(clsJugador persona)
+        public static int editarJugadorDAL(clsJugador jugador)
         {
             int numeroFilasAfectadas = 0;
             clsMyConnection miConexion = new clsMyConnection();
             SqlConnection conexion = new SqlConnection();
             SqlCommand miComando = new SqlCommand();
-            miComando.Parameters.Add("@id", System.Data.SqlDbType.Int).Value = persona.id;
-            miComando.Parameters.Add("@nombre", System.Data.SqlDbType.VarChar).Value = persona.nombre;
-            miComando.Parameters.Add("@apellido", System.Data.SqlDbType.VarChar).Value = persona.apellidos;
-            miComando.Parameters.Add("@telefono", System.Data.SqlDbType.VarChar).Value = persona.telefono;
-            miComando.Parameters.Add("@direccion", System.Data.SqlDbType.VarChar).Value = persona.direccion;
-            miComando.Parameters.Add("@foto", System.Data.SqlDbType.VarChar).Value = persona.foto;
-            miComando.Parameters.Add("@fechaNac", System.Data.SqlDbType.Date).Value = persona.fechaNacimiento;
-            miComando.Parameters.Add("@idDepartamento", System.Data.SqlDbType.Int).Value = persona.idDepartamento;
+            miComando.Parameters.Add("@idJugador", System.Data.SqlDbType.Int).Value = jugador.idJugador;
+            miComando.Parameters.Add("@nombre", System.Data.SqlDbType.VarChar).Value = jugador.nombre;
+            miComando.Parameters.Add("@password", System.Data.SqlDbType.VarChar).Value = jugador.password;
+
             try
             {
                 conexion = miConexion.getConnection();
-                miComando.CommandText = "UPDATE Personas SET nombre=@nombre, apellidos=@apellido, telefono=@telefono, direccion=@direccion, " +
-                    "foto=@foto, fechaNacimiento=@fechaNac, idDepartamento=@idDepartamento  FROM Personas WHERE ID=@id";
+                miComando.CommandText = "UPDATE Personas SET nombre=@nombre, password=@password";
                 miComando.Connection = conexion;
                 numeroFilasAfectadas = miComando.ExecuteNonQuery();
             }
@@ -82,31 +75,26 @@ namespace Api_Damas.DAL.Manejadoras
         }
 
         /// <summary>
-        /// Precondiciones: Debe recivir una persona rellena.
-        /// Recibe una persona ya rellena para insertarla en la base de datos.
-        /// Lanza los errores a la capa superior.
-        /// Postcondiciones: Inserta una nueva persona accediendo a la BBDD.
+        /// Descripcion: Recibe un jugador ya relleno para insertarlo en la base de datos. Lanza los errores a la capa superior.
+        /// Precondiciones: Debe reciibir un jugador relleno.
+        /// Postcondiciones: Inserta un nuevo jugador accediendo a la BBDD.
         /// </summary>
-        /// <param name="persona">Persona para insertar.</param>
+        /// <param name="jugador">Persona para insertar.</param>
         /// <returns>Entero con el número de filas afectadas si las hay.</returns>
-        public static int insertarPersonasDAL(clsJugador persona)
+        public static int insertarJugadorDAL(clsJugador jugador)
         {
             int numeroFilasAfectadas = 0;
             clsMyConnection miConexion = new clsMyConnection();
             SqlConnection conexion = new SqlConnection();
             SqlCommand miComando = new SqlCommand();
-            miComando.Parameters.Add("@id", System.Data.SqlDbType.Int).Value = persona.id; //Realemente me hace falta? tengo que probarlo.
-            miComando.Parameters.Add("@nombre", System.Data.SqlDbType.VarChar).Value = persona.nombre;
-            miComando.Parameters.Add("@apellido", System.Data.SqlDbType.VarChar).Value = persona.apellidos;
-            miComando.Parameters.Add("@telefono", System.Data.SqlDbType.VarChar).Value = persona.telefono;
-            miComando.Parameters.Add("@direccion", System.Data.SqlDbType.VarChar).Value = persona.direccion;
-            miComando.Parameters.Add("@foto", System.Data.SqlDbType.VarChar).Value = persona.foto;
-            miComando.Parameters.Add("@fechaNac", System.Data.SqlDbType.Date).Value = persona.fechaNacimiento;
-            miComando.Parameters.Add("@idDepartamento", System.Data.SqlDbType.Int).Value = persona.idDepartamento;
+            miComando.Parameters.Add("@idJugador", System.Data.SqlDbType.Int).Value = jugador.idJugador;
+            miComando.Parameters.Add("@nombre", System.Data.SqlDbType.VarChar).Value = jugador.nombre;
+            miComando.Parameters.Add("@password", System.Data.SqlDbType.VarChar).Value = jugador.password;
+
             try
             {
                 conexion = miConexion.getConnection();
-                miComando.CommandText = "INSERT INTO Personas VALUES(@nombre,@apellido,@telefono,@direccion,@foto,@fechaNac,@idDepartamento)";
+                miComando.CommandText = "INSERT INTO Jugadores VALUES(@nombre,@password)";
                 miComando.Connection = conexion;
                 numeroFilasAfectadas = miComando.ExecuteNonQuery();
             }

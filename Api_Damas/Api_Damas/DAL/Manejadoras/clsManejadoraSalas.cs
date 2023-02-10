@@ -7,28 +7,25 @@ namespace Api_Damas.DAL.Manejadoras
     public class clsManejadoraSalas
     {
         /// <summary>
-        /// Precondiciones: Deber recivir la id de un departamento.
-        /// Recibe un entero que es el id del departamento a eliminar y accede a la base de datos para eliminarlo.
-        /// Lanza los errores a la capa superior.
-        /// Postcondiciones: Borra el departamento accediendo a la BBDD.
+        /// Descripcion: Recibe un entero que es el codigo de la sala a eliminar y accede a la base de datos para eliminarla. Lanza los errores a la capa superior.
+        /// Precondiciones: Deber recibir el codigo de un de una sala.
+        /// Postcondiciones: Borra la sala accediendo a la BBDD.
         /// </summary>
-        /// <param name="id">Entero que representa el id del departamento a eliminar.</param>
+        /// <param name="codSala">Entero que representa el codigo de la sala a eliminar.</param>
         /// <returns>Entero con el número de filas afectadas si las hay.</returns>
-        public static int borrarDepartamentosDAL(int id)
+        public static int borrarSalaDAL(int codSala)
         {
             int numeroFilasAfectadas = 0;
-
             clsMyConnection miConexion = new clsMyConnection();
             SqlConnection conexion = new SqlConnection();
-
             SqlCommand miComando = new SqlCommand();
 
-            miComando.Parameters.Add("@id", System.Data.SqlDbType.Int).Value = id;
+            miComando.Parameters.Add("@codSala", System.Data.SqlDbType.Int).Value = codSala;
 
             try
             {
                 conexion = miConexion.getConnection();
-                miComando.CommandText = "DELETE FROM Departamentos WHERE id=@id";
+                miComando.CommandText = "DELETE FROM Salas WHERE codSala=@codSala";
                 miComando.Connection = conexion;
                 numeroFilasAfectadas = miComando.ExecuteNonQuery();
             }
@@ -40,26 +37,31 @@ namespace Api_Damas.DAL.Manejadoras
         }
 
         /// <summary>
-        /// Precondiciones: Deber recivir la id de un departamento.
-        /// Recibe un departamento ya editado para actualizarlo en la base de datos.
-        /// Lanza los errores a la capa superior.
-        /// Postcondiciones: Edita el departamento accediendo a la BBDD.
+        /// Descripcion: Recibe una sala ya editada para actualizarla en la base de datos. Lanza los errores a la capa superior.
+        /// Precondiciones: Deber recibir el codigo de una sala
+        /// Postcondiciones: Edita la sala accediendo a la BBDD.
         /// </summary>
-        /// <param name="departamento">Departamento para editar.</param>
+        /// <param name="sala">Sala para editar.</param>
         /// <returns>Entero con el número de filas afectadas si las hay.</returns>
-        public static int editarDepartamentoDAL(clsSala departamento)
+        public static int editarSalaDAL(clsSala sala)
         {
             int numeroFilasAfectadas = 0;
             clsMyConnection miConexion = new clsMyConnection();
             SqlConnection conexion = new SqlConnection();
             SqlCommand miComando = new SqlCommand();
-            miComando.Parameters.Add("@id", System.Data.SqlDbType.Int).Value = departamento.id;
-            miComando.Parameters.Add("@nombre", System.Data.SqlDbType.VarChar).Value = departamento.nombre;
+            miComando.Parameters.Add("@codSala", System.Data.SqlDbType.Int).Value = sala.codSala;
+            miComando.Parameters.Add("@nombreSala", System.Data.SqlDbType.VarChar).Value = sala.nombreSala;
+            miComando.Parameters.Add("@jugadorArriba", System.Data.SqlDbType.Int).Value = sala.jugadorArriba;
+            miComando.Parameters.Add("@jugadorAbajo", System.Data.SqlDbType.Int).Value = sala.jugadorAbajo;
+            miComando.Parameters.Add("@tiempo", System.Data.SqlDbType.BigInt).Value = sala.tiempo;
+            miComando.Parameters.Add("@cantidadFichasArriba", System.Data.SqlDbType.Int).Value = sala.cantidadFichasArriba;
+            miComando.Parameters.Add("@cantidadFichasAbajo", System.Data.SqlDbType.Int).Value = sala.cantidadFichasAbajo;
+
 
             try
             {
                 conexion = miConexion.getConnection();
-                miComando.CommandText = "UPDATE Departamentos SET nombre=@nombre FROM Departamentos WHERE ID=@id";
+                miComando.CommandText = "UPDATE Salas SET nombreSala=@nombreSala, jugadorArriba=@jugadorArriba, jugadorAbajo=@jugadorAbajo, tiempo=@tiempo, fichasArriba=@fichasArriba, fichasAbajo=@fichasAbajo FROM Departamentos WHERE ID=@id";
                 miComando.Connection = conexion;
                 numeroFilasAfectadas = miComando.ExecuteNonQuery();
             }
@@ -75,25 +77,30 @@ namespace Api_Damas.DAL.Manejadoras
         }
 
         /// <summary>
-        /// Precondiciones: Debe recivir un departamento relleno.
-        /// Recibe un departamentos ya relleno para insertarlo en la base de datos.
-        /// Lanza los errores a la capa superior.
-        /// Postcondiciones: Inserta un nuevo departamento accediendo a la BBDD.
+        /// Descripcion: Recibe una sala ya rellena para insertarla en la base de datos. Lanza los errores a la capa superior.
+        /// Precondiciones: Debe recibir una sala rellena.
+        /// Postcondiciones: Inserta una nueva sala accediendo a la BBDD.
         /// </summary>
-        /// <param name="persona">Departamento para insertar.</param>
+        /// <param name="sala">Sala para insertar.</param>
         /// <returns>Entero con el número de filas afectadas si las hay.</returns>
-        public static int insertarDepartamentoDAL(clsDepartamentos departamento)
+        public static int insertarSalaDAL(clsSala sala)
         {
             int numeroFilasAfectadas = 0;
             clsMyConnection miConexion = new clsMyConnection();
             SqlConnection conexion = new SqlConnection();
             SqlCommand miComando = new SqlCommand();
-            miComando.Parameters.Add("@id", System.Data.SqlDbType.Int).Value = departamento.id;
-            miComando.Parameters.Add("@nombre", System.Data.SqlDbType.VarChar).Value = departamento.nombre;
+            miComando.Parameters.Add("@codSala", System.Data.SqlDbType.Int).Value = sala.codSala;
+            miComando.Parameters.Add("@nombreSala", System.Data.SqlDbType.VarChar).Value = sala.nombreSala;
+            miComando.Parameters.Add("@jugadorArriba", System.Data.SqlDbType.Int).Value = sala.jugadorArriba;
+            miComando.Parameters.Add("@jugadorAbajo", System.Data.SqlDbType.Int).Value = sala.jugadorAbajo;
+            miComando.Parameters.Add("@tiempo", System.Data.SqlDbType.BigInt).Value = sala.tiempo;
+            miComando.Parameters.Add("@cantidadFichasArriba", System.Data.SqlDbType.Int).Value = sala.cantidadFichasArriba;
+            miComando.Parameters.Add("@cantidadFichasAbajo", System.Data.SqlDbType.Int).Value = sala.cantidadFichasAbajo;
+
             try
             {
                 conexion = miConexion.getConnection();
-                miComando.CommandText = "INSERT INTO Departamentos VALUES(@nombre)";
+                miComando.CommandText = "INSERT INTO Salas VALUES(@nombreSalas, @jugadorArriba, @jugadorAbajo, @tiempo, @cantidadFichasArriba, @cantidadFichasAbajo)";
                 miComando.Connection = conexion;
                 numeroFilasAfectadas = miComando.ExecuteNonQuery();
             }

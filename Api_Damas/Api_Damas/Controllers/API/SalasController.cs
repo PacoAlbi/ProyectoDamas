@@ -5,81 +5,59 @@ namespace Api_Damas.Controllers.API
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class SalasController : Controller
+    public class departamentosController : ControllerBase
     {
-        // GET: SalasController
-        public ActionResult Index()
+        // GET: api/<departamentosController>
+        [HttpGet]
+        public IEnumerable<clsSala> Get()
         {
-            return View();
+            return clsListadoDepartamentosBL.getListadoDepartamentosBL();
         }
 
-        // GET: SalasController/Details/5
-        public ActionResult Details(int id)
+        // GET api/<departamentosController>/5
+        [HttpGet("{id}")]
+        public clsDepartamentos Get(int id)
         {
-            return View();
+            return clsListadoDepartamentosBL.obtenerDepartamentoPorIdBL(id);
         }
 
-        // GET: SalasController/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: SalasController/Create
+        // POST api/<departamentosController>
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public void Post([FromBody] clsDepartamentos departamento)
         {
+            clsManejadoraDepartamentos.insertarDepartamentoBL(departamento);
+        }
+
+        // PUT api/<departamentosController>/5
+        [HttpPut("{id}")]
+        public void Put(int id, [FromBody] clsDepartamentos departamento)
+        {
+            clsManejadoraDepartamentos.editarDepartamentoBL(departamento);
+        }
+
+        // DELETE api/<departamentosController>/5
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            IActionResult result = null;
+            int numeroFilasAfectadas = 0;
             try
             {
-                return RedirectToAction(nameof(Index));
+                numeroFilasAfectadas = clsManejadoraDepartamentos.borrarDepartamentosBL(id);
+                if (numeroFilasAfectadas == 0)
+                {
+                    result = NoContent();
+                }
+                else
+                {
+                    result = Ok();
+                }
             }
-            catch
+            catch (Exception)
             {
-                return View();
+                result = BadRequest();
             }
-        }
-
-        // GET: SalasController/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: SalasController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: SalasController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: SalasController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            return result;
         }
     }
 }

@@ -32,7 +32,7 @@ namespace Api_Damas.Entidades
 
         #region Constructors
         public clsSala() { }
-        public clsSala(int _codSala, string _nombreSala, string _jugadorArriba, string _jugadorAbajo, int _tiempo, int _cantidadFichasArriba, int _cantidadFichasAbajo)
+        public clsSala(int _codSala, string _nombreSala, string _jugadorArriba, string _jugadorAbajo, long _tiempo, int _cantidadFichasArriba, int _cantidadFichasAbajo)
         {
             codSala = _codSala;
             nombreSala = _nombreSala;
@@ -42,7 +42,7 @@ namespace Api_Damas.Entidades
             cantidadFichasArriba = _cantidadFichasArriba;
             cantidadFichasAbajo = _cantidadFichasAbajo;
         }
-        public clsSala(int _codSala, string _nombreSala, string _jugadorArriba, string _jugadorAbajo, int _tiempo)
+        public clsSala(int _codSala, string _nombreSala, string _jugadorArriba, string _jugadorAbajo, long _tiempo)
         {
             codSala = _codSala;
             nombreSala = _nombreSala;
