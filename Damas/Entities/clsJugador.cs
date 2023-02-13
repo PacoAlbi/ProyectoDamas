@@ -10,21 +10,25 @@ namespace Entities
 	{
 
 		#region Attributes
+		private int _idJugador;
+
 		private String _nombre;
 
 		private String _password;
 
-		// private List<clsSala> _partidasJugadas; consulta con inner join ¿?
+		//private List<clsSala> _partidasJugadas;// consulta con inner join ¿?
 
 		#endregion
 
 		#region Properties
 
+		public int idJugador { get { return _idJugador; } set { _idJugador = value; } }	
+
 		public String nombre { get { return _nombre; } set { _nombre = value; } }
 
 		public String password { get { return _password; } set { _password = value; } }
 
-		public List<clsSala> partidasJugadas { get { return _partidasJugadas; } set { _partidasJugadas = value; } }
+		//public List<clsSala> partidasJugadas { get { return _partidasJugadas; } set { _partidasJugadas = value; } }
 
 		#endregion
 
@@ -32,11 +36,22 @@ namespace Entities
 
 		public clsJugador() { }
 
-		public clsJugador(string _nombre, string _password, List<clsSala> _partidasJugadas)
+
+
+		public clsJugador(int idJug, string _nombre, string _password)
+		{
+			idJugador = idJug;
+			nombre=_nombre;
+			password=_password;
+			//partidasJugadas=_partidasJugadas;
+		}
+
+
+		public clsJugador( string _nombre, string _password)
 		{
 			nombre=_nombre;
 			password=_password;
-			partidasJugadas=_partidasJugadas;
+			//partidasJugadas=_partidasJugadas;
 		}
 
 

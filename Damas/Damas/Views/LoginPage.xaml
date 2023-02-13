@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Damas.Views.LoginPage"
+             xmlns:vm ="clr-namespace:Damas.ViewModels"
+             Title="LoginPage"
+             BackgroundColor="#847070">
+    <ContentPage.BindingContext>
+        <vm:LoginVM/>
+    </ContentPage.BindingContext>
+    
+    
+    <VerticalStackLayout>
+        <Grid
+            ColumnDefinitions="*,*,*"
+            RowDefinitions="*,*,*,*,*">
+            <Label
+                Text="Damas Namas"
+                Grid.ColumnSpan="3"/>
+
+            <Label  
+                Text="user"
+                Grid.Row="2"/>
+            <Frame>
+                <Entry
+                    Grid.Row="2"
+                    Grid.Column="2"
+                    Grid.ColumnSpan="2"
+                    Text="{Binding username}"/>
+            </Frame>
+
+            <Label  
+                Text="password"
+                Grid.Row="3"/>
+            <Frame>
+                <Entry
+                    Grid.Row="3"
+                    Grid.Column="2"
+                    Grid.ColumnSpan="2"
+                    Text="{Binding password}"
+                    IsPassword="True"/>
+            </Frame>
+
+
+            <HorizontalStackLayout
+                Grid.Row="4"
+                Grid.ColumnSpan="3"
+                Spacing="20">
+                <Button
+                    BindingContext="{Binding ComandoLogin}"
+                    Text="Log in"
+                    BackgroundColor="SaddleBrown"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"/>
+                
+                <Button
+                    BindingContext="{Binding ComandoSignUp}"
+                    Text="Sign up"
+                    IsEnabled="{Binding }"
+                    BackgroundColor="SaddleBrown"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"/>
+                
+            </HorizontalStackLayout>
+
+        </Grid>
+    </VerticalStackLayout>
+</ContentPage>

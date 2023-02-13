@@ -1,4 +1,6 @@
 ﻿using Damas.ViewModels.Utilidades;
+using Entities;
+using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Org.Apache.Http.Authentication;
 using System;
 using System.Collections.Generic;
@@ -13,15 +15,18 @@ namespace Damas.ViewModels
     {
         #region Atributos
 
+        [ObservableProperty]
         private string _username;
+        [ObservableProperty]
         private string _password;
         private DelegateCommand _comandoLogin;
+		private DelegateCommand _comandoSignup;
 
-        #endregion
+		#endregion
 
-        #region Propiedades
+		#region Propiedades
 
-        public string username
+		public string username
         {
             get
             {
@@ -58,11 +63,20 @@ namespace Damas.ViewModels
             }
         }
 
-        #endregion
+		public DelegateCommand ComandoSignup
+		{
+			get
+			{
+				_comandoSignup = new DelegateCommand(ComandoSignup_Execute, ComandoSignup_CanExecute);
+				return _comandoSignup;
+			}
+		}
 
-        #region Constructores
+		#endregion
 
-        public LoginVM()
+		#region Constructores
+
+		public LoginVM()
         {
             _username = null;
             _password = null;
@@ -77,7 +91,14 @@ namespace Damas.ViewModels
         /// </summary>
         private void ComandoLogin_Execute()
         {
-            // navegar a la siguiente pagina
+            clsJugador player = new(username, password);
+
+            var dict = new Dictionary<string, object>();
+            dict.Add("jugador", player);
+
+
+            Shell.Current.GoToAsync("Main", true, dict);
+
         }
 
         /// <summary>
@@ -98,6 +119,54 @@ namespace Damas.ViewModels
             return botonLogin;
         }
 
-        #endregion
-    }
+		/// <summary>
+		/// Metodo que se acciona al pulsar el boton de Log in, cuando se pulse, navegaremos hacia la siguiente pagina
+		/// </summary>
+		private void ComandoSignup_Execute()
+		{
+			clsJugador player = new(username, password);
+
+			var dict = new Dictionary<string, object>();
+			dict.Add("jugador", player);
+
+
+			Shell.Current.GoToAsync("Main", true, dict);
+
+		}
+
+		/// <summary>
+		/// Metodo que comprueba si el nombre y el usuario estan vacios para activar el boton de logeo o no
+		/// </summary>
+		/// <returns> bool </returns>
+		private bool ComandoSignup_CanExecute()
+		{
+			bool botonSignUp = true;
+
+			if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+			{
+
+				botonSignUp = false;
+
+			}
+
+			return botonSignUp;
+		}
+
+		#endregion
+
+		#region Utilities
+
+		private bool TestLogin()
+        {
+            
+
+
+        }
+
+        private clsJugador TestSignUp()
+        {
+
+        }
+		#endregion
+	}
 }

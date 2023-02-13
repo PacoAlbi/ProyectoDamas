@@ -13,7 +13,6 @@
 
   <ItemGroup>
     <Folder Include="Conexion\" />
-    <Folder Include="Listados\" />
     <Folder Include="Gestion\" />
   </ItemGroup>
 
