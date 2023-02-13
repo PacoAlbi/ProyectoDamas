@@ -10,6 +10,7 @@ namespace DAL
         public String user { get; set; }
         public String pass { get; set; }
         #endregion
+
         #region Constructores
         public clsMyConnection()
         {
@@ -26,6 +27,7 @@ namespace DAL
             this.pass = pass;
         }
         #endregion
+
         #region Métodos
         public SqlConnection getConnection()
         {

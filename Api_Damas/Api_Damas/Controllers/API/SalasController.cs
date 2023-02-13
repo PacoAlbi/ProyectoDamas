@@ -20,18 +20,10 @@ namespace Api_Damas.Controllers.API
 
         // GET api/<SalasController>/5
         [HttpGet("{id}")]
-        public clsSala GetSalaPorId(int id)
+        public clsSala Get(int id)
         {
             return clsListadoSalas.ObtenerSalaPorIdDAL(id);
         }
-
-        // GET api/<SalasController>/5
-        [HttpGet("{id}")]
-        public clsSala GetListaSalasId(int id)
-        {
-            return clsListadoSalas.ObtenerSalaPorJugadorDAL(id);
-        }
-
 
         // POST api/<SalasController>
         [HttpPost]
@@ -42,7 +34,7 @@ namespace Api_Damas.Controllers.API
 
         // PUT api/<SalasController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] clsSala sala)
+        public void Put([FromBody] clsSala sala)
         {
             clsManejadoraSalas.editarSalaDAL(sala);
         }
