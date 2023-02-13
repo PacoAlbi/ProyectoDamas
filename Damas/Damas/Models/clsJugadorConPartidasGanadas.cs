@@ -9,14 +9,13 @@ namespace Damas.Models
 {
     class clsJugadorConPartidasGanadas : clsJugador
     {
-        public int partidasGanadas { get; set; }
+        public List<clsSala> partidas{ get; set; }
 
-		public clsJugadorConPartidasGanadas(String nombre, String password, List<clsSala> partidasJugadas, int partidasGanadas)
+		public clsJugadorConPartidasGanadas(String nombre, String password, List<clsSala> partidasJugadas)
 		{
 			base.nombre=nombre;
 			base.password=password;
-			base.partidasJugadas=partidasJugadas;
-			this.partidasGanadas=partidasGanadas;
+			partidas=partidasJugadas;
 		}
 	}
 }

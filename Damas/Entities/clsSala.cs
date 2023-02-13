@@ -49,6 +49,12 @@ namespace Entities
 
 
 		#region Constructors
+
+		public clsSala()
+		{
+
+		}
+
 		public clsSala(int _codSala, string _nombreSala, int _jugadorArriba, int _jugadorAbajo, long _tiempo, int _cantidadFichasArriba, int _cantidadFichasAbajo)
 		{
 			codSala=_codSala;

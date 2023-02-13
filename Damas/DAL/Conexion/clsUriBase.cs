@@ -10,7 +10,7 @@ namespace DAL
     {
         public static String getUriBase()
         {
-            return "https://damasapi.azurewebsites.net/api/";
+            return "https://apidamaspaco.azurewebsites.net/api/";
         }
     }
 }
