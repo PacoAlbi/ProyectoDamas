@@ -13,9 +13,6 @@
             HorizontalOptions="Center"
             ColumnDefinitions="*,*,*,*,*,*,*,*"
             RowDefinitions="*,*,*,*,*,*,*,*">
-            <BoxView>
-                
-            </BoxView>
             
         </Grid>
     </VerticalStackLayout>
