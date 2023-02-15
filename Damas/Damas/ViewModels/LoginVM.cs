@@ -136,7 +136,7 @@ namespace Damas.ViewModels
 
 		/// <summary>
 		/// Metodo que comprueba si el nombre y el usuario estan vacios para activar el boton de logeo o no
-		/// </summary>
+		/// </summary>dddddd
 		/// <returns> bool </returns>
 		private bool ComandoSignup_CanExecute()
 		{
