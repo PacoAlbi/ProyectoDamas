@@ -8,22 +8,33 @@ namespace Damas.Models
 {
 	public class clsPieza
 	{
-		public enum Color
-		{
-			Blanco,
-			Negro
-		}
-		public enum Tipo
-		{
-			Normal,
-			Reina	
-		}
 
-		public class Pieza
-		{
 			public Color colorPieza { get; set; }
 			public Tipo tipoPieza { get; set; }
+
+		public clsPieza(Color colorP, Tipo tipo)
+		{
+			colorPieza = colorP;
+			tipoPieza = tipo;
+		}
+
+		public clsPieza(Color colorP)
+		{
+			colorPieza = colorP;
+			tipoPieza = Tipo.Normal;
 		}
 
 	}
+
+	public enum Color
+	{
+		Blanco,
+		Negro
+	}
+	public enum Tipo
+	{
+		Normal,
+		Reina
+	}
+
 }
