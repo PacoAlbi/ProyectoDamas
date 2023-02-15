@@ -1,14 +1,6 @@
 ﻿using Damas.ViewModels.Utilidades;
 using Entities;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
-using Org.Apache.Http.Authentication;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace Damas.ViewModels
 {
     public class LoginVM : clsVMBase
@@ -156,17 +148,17 @@ namespace Damas.ViewModels
 
 		#region Utilities
 
-		private bool TestLogin()
-        {
-            
+//		private bool TestLogin()
+  //      {
+    //        
+    //
+    //
+      //  }
+      //
+        //private clsJugador TestSignUp()
+        //{
 
-
-        }
-
-        private clsJugador TestSignUp()
-        {
-
-        }
+        //}
 		#endregion
 	}
 }
