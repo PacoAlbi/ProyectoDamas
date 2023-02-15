@@ -1,4 +1,4 @@
-﻿using Microsoft.Toolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +21,7 @@ namespace Damas.ViewModels
 
 			//Cuando se notifique el cambio de IsBusy tambien se notificará el de IsNotBusy
 			[ObservableProperty]
-			[AlsoNotifyChangeFor(nameof(IsNotBusy))]
+			[NotifyPropertyChangedFor(nameof(IsNotBusy))]
 			//atributo que comprueba si se ha llamado, en la vista, a algúna acción del viewModel
 			private bool isBusy;
 
