@@ -8,13 +8,16 @@
 
   <ItemGroup>
     <PackageReference Include="AlohaKit" Version="1.0.74" />
+<<<<<<< HEAD
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.1.0" />
+=======
+    <PackageReference Include="Microsoft.Toolkit.Mvvm" Version="7.1.2" />
+    <PackageReference Include="Newtonsoft.Json.Bson" Version="1.0.2" />
+>>>>>>> c99c1e24e37d1465d5578a0e4d22dad1a9ccf291
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Conexion\" />
-    <Folder Include="Listados\" />
-    <Folder Include="Gestion\" />
   </ItemGroup>
 
   <ItemGroup>
