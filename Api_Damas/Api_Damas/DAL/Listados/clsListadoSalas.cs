@@ -25,7 +25,7 @@ namespace Api_Damas.DAL.Listados
             try
             {
                 conexion = miConexion.getConnection();
-                miComando.CommandText = "SELECT * FROM Salas";
+                miComando.CommandText = "SELECT * FROM FROM Salas";
                 miComando.Connection = conexion;
                 miLector = miComando.ExecuteReader();
                 if (miLector.HasRows)
@@ -35,9 +35,9 @@ namespace Api_Damas.DAL.Listados
                         miSala = new clsSala();
                         miSala.codSala = miLector.GetInt32(0);
                         miSala.nombreSala = miLector.GetString(1);
-                        miSala.jugadorArriba = miLector.GetInt32(2);
-                        miSala.jugadorAbajo = miLector.GetInt32(3);
-                        miSala.tiempo = miLector.GetInt64(4);
+                        miSala.cantidadFichasArriba = miLector.GetInt32(2);
+                        miSala.cantidadFichasAbajo = miLector.GetInt32(3);
+                        miSala.tiempo = miLector.GetInt32(4);
                         miSala.cantidadFichasArriba = miLector.GetInt32(5);
                         miSala.cantidadFichasAbajo = miLector.GetInt32(6);
                         listadoSalas.Add(miSala);
@@ -140,9 +140,9 @@ namespace Api_Damas.DAL.Listados
                         miSala = new clsSala();
                         miSala.codSala = miLector.GetInt32(0);
                         miSala.nombreSala = miLector.GetString(1);
-                        miSala.jugadorArriba = miLector.GetInt32(2);
-                        miSala.jugadorAbajo = miLector.GetInt32(3);
-                        miSala.tiempo = miLector.GetInt64(4);
+                        miSala.cantidadFichasArriba = miLector.GetInt32(2);
+                        miSala.cantidadFichasAbajo = miLector.GetInt32(3);
+                        miSala.tiempo = miLector.GetInt32(4);
                         miSala.cantidadFichasArriba = miLector.GetInt32(5);
                         miSala.cantidadFichasAbajo = miLector.GetInt32(6);
                     }
