@@ -17,11 +17,11 @@ namespace Entities
 
 		private String _nombreSala;
 
-		private clsJugador _jugadorArriba;
+		private int _jugadorArriba;
 
-		private clsJugador _jugadorAbajo;
+		private int _jugadorAbajo;
 
-		private int _tiempo;
+		private long _tiempo;
 
 		private int _cantidadFichasArriba;
 
@@ -34,9 +34,9 @@ namespace Entities
 
 		public String nombreSala { get { return _nombreSala; } set { _nombreSala = value; } }
 
-		public clsJugador jugadorArriba { get { return _jugadorArriba; } set { _jugadorArriba = value; } }
+		public int jugadorArriba { get { return _jugadorArriba; } set { _jugadorArriba = value; } }
 
-		public clsJugador jugadorAbajo { get { return _jugadorAbajo; } set { _jugadorAbajo = value; } }
+		public int jugadorAbajo { get { return _jugadorAbajo; } set { _jugadorAbajo = value; } }
 
 		public long tiempo { get { return _tiempo; } set { _tiempo = value; } }
 
@@ -49,7 +49,13 @@ namespace Entities
 
 
 		#region Constructors
-		public clsSala(int _codSala, string _nombreSala, clsJugador _jugadorArriba, clsJugador _jugadorAbajo, long _tiempo, int _cantidadFichasArriba, int _cantidadFichasAbajo)
+
+		public clsSala()
+		{
+
+		}
+
+		public clsSala(int _codSala, string _nombreSala, int _jugadorArriba, int _jugadorAbajo, long _tiempo, int _cantidadFichasArriba, int _cantidadFichasAbajo)
 		{
 			codSala=_codSala;
 			nombreSala=_nombreSala;
@@ -61,7 +67,7 @@ namespace Entities
 		}
 
 		
-		public clsSala(int _codSala, string _nombreSala, clsJugador _jugadorArriba, clsJugador _jugadorAbajo, long _tiempo)
+		public clsSala(int _codSala, string _nombreSala, int _jugadorArriba, int _jugadorAbajo, long _tiempo)
 		{
 			codSala=_codSala;
 			nombreSala=_nombreSala;

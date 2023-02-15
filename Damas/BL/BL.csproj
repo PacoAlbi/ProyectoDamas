@@ -9,11 +9,18 @@
   <ItemGroup>
     <PackageReference Include="AlohaKit" Version="1.0.74" />
     <PackageReference Include="Microsoft.Toolkit.Mvvm" Version="7.1.2" />
+    <PackageReference Include="Newtonsoft.Json.Bson" Version="1.0.2" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\DAL\DAL.csproj" />
     <ProjectReference Include="..\Entities\Entities.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Conexion\" />
+    <Folder Include="Gestion\" />
+    <Folder Include="Listados\" />
   </ItemGroup>
 
 </Project>

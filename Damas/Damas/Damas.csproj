@@ -51,6 +51,7 @@
 	<ItemGroup>
 	  <PackageReference Include="AlohaKit" Version="1.0.74" />
 	  <PackageReference Include="Microsoft.Toolkit.Mvvm" Version="7.1.2" />
+	  <PackageReference Include="Newtonsoft.Json.Bson" Version="1.0.2" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -60,6 +61,9 @@
 
 	<ItemGroup>
 	  <MauiXaml Update="Views\GamePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\LoginPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

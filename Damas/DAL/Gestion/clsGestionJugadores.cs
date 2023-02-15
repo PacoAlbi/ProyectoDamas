@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DAL.Conexion
+namespace DAL.Gestion
 {
-    internal class Class1
-    {
-    }
+	internal class clsGestionJugadores
+	{
+	}
 }
